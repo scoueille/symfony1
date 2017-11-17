@@ -29,9 +29,16 @@ default:
     # Routing settings
     no_script_name:         false       # Enable the front controller name in generated URLs
 
+    # Validation settings, used for error generation by the Validation helper
+    validation_error_prefix:    ' &darr;&nbsp;'
+    validation_error_suffix:    ' &nbsp;&darr;'
+    validation_error_class:     form_error
+    validation_error_id_prefix: error_for_
+
     # Cache settings
     cache:                  false       # Enable the template cache
     etag:                   true        # Enable etag handling
+    lazy_cache_key:         false       # Delays creation of a cache key until after checking whether an action or partial is cacheable (defaults to false for backward compatibility)
 
     # Logging and debugging settings
     web_debug:              false       # Enable the web debug toolbar
@@ -43,7 +50,7 @@ default:
     web_debug_web_dir:      /sf/sf_web_debug
 
     # Helpers included in all templates by default
-    standard_helpers:       [Partial, Cache]
+    standard_helpers:       [Partial, Cache, Form]
 
     # Activated modules from plugins or from the symfony core
     enabled_modules:        [default]
