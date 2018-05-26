@@ -75,7 +75,7 @@ function truncate_text($text, $length = 30, $truncate_string = '...', $truncate_
     $truncate_text = $substr($text, 0, $length - $strlen($truncate_string));
     if ($truncate_lastspace)
     {
-      $truncate_text = preg_replace('/\s+?(\S+)?$/', '', $truncate_text);
+      $truncate_text = preg_replace('/\s+?(\S+)?$/u', '', $truncate_text);
     }
     $text = $truncate_text.$truncate_string;
   }
@@ -170,11 +170,11 @@ function excerpt_text($text, $phrase, $radius = 100, $excerpt_string = '...', $e
       // only cut off at ends where $exceprt_string is added
       if($prefix)
       {
-        $excerpt = preg_replace('/^(\S+)?\s+?/', ' ', $excerpt);
+        $excerpt = preg_replace('/^(\S+)?\s+?/u', ' ', $excerpt);
       }
       if($postfix)
       {
-        $excerpt = preg_replace('/\s+?(\S+)?$/', ' ', $excerpt);
+        $excerpt = preg_replace('/\s+?(\S+)?$/u', ' ', $excerpt);
       }
     }
 
