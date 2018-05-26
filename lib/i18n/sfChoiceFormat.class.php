@@ -65,7 +65,7 @@ class sfChoiceFormat
   /**
    * The pattern to parse the formatting string.
    */
-  protected $parse = '/(?:^\s*|\s*\|)([\(\[\{]([-Inf\d:\s]+,?[\+Inf\d\s:\?\-=!><%\|&\(\)]*)+[\)\]\}])\s*/';
+  protected $parse = '/(?:^\s*|\s*\|)([\(\[\{]([-Inf\d:\s]+,?[\+Inf\d\s:\?\-=!><%\|&\(\)]*)+[\)\]\}])\s*/u';
 
   /**
    * The value for positive infinity.
