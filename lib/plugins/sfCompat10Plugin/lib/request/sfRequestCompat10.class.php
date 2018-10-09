@@ -36,7 +36,12 @@ class sfRequestCompat10
    */
   static public function getError($request, $name)
   {
-    return $request->getAttribute('errors['.$name.']');
+    $arrayErrors =  $request->getAttribute('errors', array());
+    if(array_key_exists($name, $arrayErrors)) {
+        return $arrayErrors[$name];
+    } else {
+        return null;
+    }
   }
 
   /**
@@ -73,7 +78,7 @@ class sfRequestCompat10
    */
   static public function hasError($request, $name)
   {
-    return $request->hasAttribute('errors['.$name.']');
+    return array_key_exists($name, $request->getAttribute('errors', array()));
   }
 
   /**
@@ -98,7 +103,17 @@ class sfRequestCompat10
    */
   static public function removeError($request, $name)
   {
-    return $request->getAttributeHolder()->remove('errors['.$name.']');
+    $retval = null;
+
+    $errors = $request->getAttribute('errors', array());
+    if (array_key_exists($name, $errors))
+    {
+      $retval = $errors[$name];
+      unset($errors[$name]);
+    }
+    $request->setAttribute('errors', $errors);
+    
+    return $retval;
   }
 
   /**
