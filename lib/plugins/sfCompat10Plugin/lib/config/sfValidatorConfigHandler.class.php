@@ -101,7 +101,7 @@ class sfValidatorConfigHandler extends sfYamlConfigHandler
 
     $this->generateRegistration('GET', $data, $methods, $names, $validators);
 
-    if (count($fillin))
+    if (is_array($fillin) && count($fillin))
     {
       $data[] = sprintf("  \$this->context->getRequest()->setAttribute('symfony.fillin', %s);", $fillin);
     }
@@ -114,7 +114,7 @@ class sfValidatorConfigHandler extends sfYamlConfigHandler
 
     $this->generateRegistration('POST', $data, $methods, $names, $validators);
 
-    if (count($fillin))
+    if (is_array($fillin) && count($fillin))
     {
       $data[] = sprintf("  \$this->context->getRequest()->setAttribute('symfony.fillin', %s);", $fillin);
     }
