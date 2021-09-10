@@ -262,7 +262,7 @@ class sfValidatorManager
 
     // now for the dirty work
     if (
-      ($data['is_file'] && !$value['name'])
+      ($data['is_file'] && (!is_array($value) || !$value['name']))
       ||
       (!$data['is_file'] && (is_array($value) ? sfToolkit::isArrayValuesEmpty($value) : ($value === null || strlen($value) == 0)))
     )
