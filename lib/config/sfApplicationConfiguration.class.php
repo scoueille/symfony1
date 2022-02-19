@@ -143,7 +143,7 @@ abstract class sfApplicationConfiguration extends ProjectConfiguration
     }
 
     // error settings
-    ini_set('display_errors', $this->isDebug() ? 'on' : 'off');
+    ini_set('display_errors', $this->isDebug() ? 1 : 0);
     error_reporting(sfConfig::get('sf_error_reporting'));
 
     // initialize plugin configuration objects
