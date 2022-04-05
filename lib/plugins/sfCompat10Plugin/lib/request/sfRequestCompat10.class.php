@@ -261,14 +261,16 @@ class sfRequestCompat10
    */
   static public function hasFile($request, $name)
   {
+    $isset = false;
     if (preg_match('/^(.+?)\[(.+?)\]$/', $name, $match))
     {
-      return isset($_FILES[$match[1]]['name'][$match[2]]);
+      $isset = isset($_FILES[$match[1]]['name'][$match[2]]);
     }
     else
     {
-      return isset($_FILES[$name]);
+      $isset = isset($_FILES[$name]);
     }
+    return $isset && (self::getFileValue($request, $name, 'error') != UPLOAD_ERR_NO_FILE);
   }
 
   /**
