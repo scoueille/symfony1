@@ -11,10 +11,7 @@
 /**
  * sfPathInfoRouting class is a very simple routing class that uses PATH_INFO.
  *
- * @package    symfony
- * @subpackage routing
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
- * @version    SVN: $Id: sfPathInfoRouting.class.php 20566 2009-07-29 07:04:01Z fabien $
  */
 class sfPathInfoRouting extends sfRouting
 {
@@ -121,4 +118,9 @@ class sfPathInfoRouting extends sfRouting
 
     return $arr1;
   }
+
+    public function getRoute($name)
+    {
+        throw new sfException(sprintf('Route "%s" is not defined.', $name));
+    }
 }
