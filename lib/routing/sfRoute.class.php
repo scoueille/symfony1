@@ -738,7 +738,7 @@ class sfRoute implements Serializable
     protected function fixDefaults()
     {
         foreach ($this->defaults as $key => $value) {
-            if (ctype_digit($key)) {
+            if (ctype_digit((string) $key)) {
                 $this->defaults[$value] = true;
             } else {
                 $this->defaults[$key] = urldecode((string) $value);
